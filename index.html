@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#6c5ce7">
+<title>RIVO FN</title>
+<style>
+:root{--bg:#f3f4fb;--card:#fff;--tx:#14162b;--mut:#7a7f9a;--pri:#6c5ce7;--pos:#12b76a;--neg:#f04438;--bd:#e6e8f2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0f1c;--card:#171a2e;--tx:#eef0ff;--mut:#8c92b3;--bd:#252946;color-scheme:dark}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
+#app{max-width:520px;margin:0 auto;padding:16px 16px 110px}
+.hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+h1{margin:0;font-size:26px;letter-spacing:1px;font-weight:800}h1 b{color:var(--pri)}
+.ic{width:42px;height:42px;border:0;border-radius:14px;background:var(--card);color:var(--tx);font-size:20px;box-shadow:0 2px 10px #0000000d}
+.sum{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.sum>div{background:linear-gradient(135deg,#6c5ce7,#8e7cff);color:#fff;border-radius:20px;padding:14px}
+.sum>div:nth-child(2){background:linear-gradient(135deg,#f04438,#ff7a6b)}
+.sum>div:first-child{background:linear-gradient(135deg,#0ea35f,#35d08a)}
+.sum small{display:block;opacity:.9;font-size:12px;margin-bottom:6px}.sum strong{font-size:18px}
+.sr,input,textarea{width:100%;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:14px;padding:13px 14px;font-size:16px;font-family:inherit;margin-bottom:10px;outline:none}
+.sr:focus,input:focus,textarea:focus{border-color:var(--pri)}
+.p{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:18px;padding:12px 14px;margin-bottom:10px;box-shadow:0 2px 10px #0000000a}
+.av{width:44px;height:44px;border-radius:15px;background:var(--pri);color:#fff;display:grid;place-items:center;font-weight:800;font-size:18px;flex:none}
+.p .nm{flex:1;font-weight:700}.p .nm small{display:block;color:var(--mut);font-weight:400;font-size:12px;margin-top:2px}
+.bal{text-align:left;font-weight:800;direction:ltr}.bal small{display:block;font-weight:500;font-size:11px;color:var(--mut)}
+.g{color:var(--pos)}.r{color:var(--neg)}
+.fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);border:0;background:var(--pri);color:#fff;border-radius:30px;padding:15px 28px;font-size:16px;font-weight:700;box-shadow:0 8px 24px #6c5ce766}
+.em{text-align:center;color:var(--mut);padding:18px 0;font-size:14px}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:14px}.top h2{flex:1;margin:0;font-size:20px}
+.big{background:var(--card);border-radius:22px;padding:18px;text-align:center;margin-bottom:12px}
+.big small{color:var(--mut);display:block;margin-bottom:4px}.big strong{font-size:28px;direction:ltr;display:inline-block}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.btns button{border:0;border-radius:16px;padding:14px;font-size:16px;font-weight:700;color:#fff}
+.bp{background:var(--pos)}.bn{background:var(--neg)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ch{font-weight:800;font-size:14px;text-align:center;padding:8px;border-radius:12px;margin-bottom:8px}
+.ch.g{background:#12b76a22}.ch.r{background:#f0443822}
+.en{background:var(--card);border-radius:16px;padding:10px;margin-bottom:8px;box-shadow:0 2px 8px #0000000a}
+.en .am{font-weight:800;font-size:14px;direction:ltr;text-align:right}.am span{font-weight:500;color:var(--mut);font-size:12px}
+.en .nt{font-size:12px;margin-top:4px;word-break:break-word}.en .dt{font-size:11px;color:var(--mut);margin-top:4px}
+.ac{display:flex;gap:6px;margin-top:8px}.ac button{flex:1;border:1px solid var(--bd);background:transparent;color:var(--mut);border-radius:10px;padding:6px;font-size:14px}
+.ac .ck.on{background:var(--pos);border-color:var(--pos);color:#fff}.dn{opacity:.5}.dn .am{text-decoration:line-through}
+#sh{display:none}#sh.open{display:block}
+.bk{position:fixed;inset:0;background:#0007;z-index:5}
+.bx{position:fixed;left:0;right:0;bottom:0;max-width:520px;margin:0 auto;background:var(--bg);border-radius:24px 24px 0 0;padding:20px 16px calc(20px + env(safe-area-inset-bottom,0px));z-index:6}
+.bx h3{margin:0 0 12px}.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--card);padding:5px;border-radius:14px;margin-bottom:10px}
+.seg button{border:0;background:transparent;color:var(--tx);padding:10px;border-radius:10px;font-weight:700;font-size:15px}.seg .on{background:var(--pri);color:#fff}
+.pv{color:var(--mut);min-height:20px;margin:-2px 4px 10px;direction:ltr;text-align:right}
+.pb{width:100%;border:0;background:var(--pri);color:#fff;border-radius:14px;padding:14px;font-size:16px;font-weight:700;margin-top:4px}
+.pb.s{background:var(--card);color:var(--tx);border:1px solid var(--bd)}.pb.d{background:var(--neg)}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="sh"></div>
+<script>
+const K='rivo_fn_v1';let S=null;
+try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+S=S||{rate:250,people:[]};
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+let cur=null,q='',typ='in',cc='DA';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const net=p=>p.e.reduce((a,x)=>x.done?a:a+(x.t==='in'?x.da:-x.da),0);
+const sum=(p,t)=>p.e.filter(x=>x.t===t&&!x.done).reduce((a,x)=>a+x.da,0);
+const amt=x=>x.c==='$'?`${x.a}$ <span>(${fmt(x.da)} DA)</span>`:`${fmt(x.da)} DA`;
+const cls=n=>n>0?'r':n<0?'g':'';
+const lbl=n=>n>0?'عليك':n<0?'ليك':'خالص ✓';
+function sheet(h){const s=$('#sh');s.innerHTML=`<div class="bk" onclick="cl()"></div><div class="bx">${h}</div>`;s.className='open'}
+function cl(){$('#sh').className='';$('#sh').innerHTML=''}
+function render(){cur?detail():home()}
+function home(){
+ let ow=0,om=0;S.people.forEach(p=>{const n=net(p);n>0?ow+=n:om-=n});
+ $('#app').innerHTML=`<div class="hd"><h1>RIVO <b>FN</b></h1><button class="ic" onclick="sets()">⚙</button></div>
+ <div class="sum"><div><small>ليك عند الناس</small><strong>${fmt(om)} DA</strong></div><div><small>عليك للناس</small><strong>${fmt(ow)} DA</strong></div></div>
+ <input class="sr" placeholder="ابحث عن شخص…" value="${esc(q)}" oninput="q=this.value;list()">
+ <div id="ls"></div><button class="fab" onclick="addP()">＋ شخص جديد</button>`;list()}
+function list(){
+ const L=S.people.filter(p=>p.n.includes(q));
+ $('#ls').innerHTML=L.map(p=>{const n=net(p);return `<div class="p" onclick="cur=${p.id};render()"><div class="av">${esc(p.n.trim()[0]||'?')}</div><div class="nm">${esc(p.n)}<small>${p.e.filter(x=>!x.done).length} عملية جارية</small></div><div class="bal ${cls(n)}">${fmt(Math.abs(n))} DA<small>${lbl(n)}</small></div></div>`}).join('')||'<div class="em">ما كاش أشخاص. اضغط ＋ باش تزيد واحد</div>'}
+function detail(){
+ const p=S.people.find(x=>x.id===cur);if(!p){cur=null;return render()}
+ const n=net(p);
+ const col=t=>p.e.filter(x=>x.t===t).map(x=>`<div class="en ${x.done?'dn':''}"><div class="am">${amt(x)}</div>${x.note?`<div class="nt">${esc(x.note)}</div>`:''}<div class="dt">${x.d}</div><div class="ac"><button class="ck ${x.done?'on':''}" onclick="tg(${x.id})">✓</button><button onclick="del(${x.id})">✕</button></div></div>`).join('')||'<div class="em">—</div>';
+ $('#app').innerHTML=`<div class="top"><button class="ic" onclick="cur=null;render()">→</button><h2>${esc(p.n)}</h2><button class="ic" onclick="more()">⋯</button></div>
+ <div class="big"><small>${lbl(n)}</small><strong class="${cls(n)}">${fmt(Math.abs(n))} DA</strong></div>
+ <div class="btns"><button class="bp" onclick="ent('in')">＋ عطاني</button><button class="bn" onclick="ent('out')">− عطيتو</button></div>
+ <div class="cols"><div><div class="ch g">＋ عطاني · ${fmt(sum(p,'in'))}</div>${col('in')}</div><div><div class="ch r">− عطيتو · ${fmt(sum(p,'out'))}</div>${col('out')}</div></div>`}
+function addP(){sheet(`<h3>شخص جديد</h3><input id="pn" placeholder="الاسم"><button class="pb" onclick="savP()">حفظ</button>`);setTimeout(()=>$('#pn').focus(),50)}
+function savP(){const n=$('#pn').value.trim();if(!n)return;S.people.unshift({id:Date.now(),n,e:[]});save();cl();cur=S.people[0].id;render()}
+function ent(t){typ=t;cc='DA';sheet(`<h3>${t==='in'?'＋ عطاني':'− عطيتو'}</h3><div class="seg"><button id="b1" class="on" onclick="cc='DA';pv()">DA دينار</button><button id="b2" onclick="cc='$';pv()">$ دولار</button></div><input id="am" type="number" inputmode="decimal" placeholder="المبلغ" oninput="pv()"><div id="pv" class="pv"></div><input id="nt" placeholder="ملاحظة (اختياري)"><button class="pb" onclick="add()">إضافة</button>`);setTimeout(()=>$('#am').focus(),50)}
+function pv(){$('#b1').className=cc==='DA'?'on':'';$('#b2').className=cc==='$'?'on':'';const a=+$('#am').value;$('#pv').textContent=cc==='$'&&a>0?`${a}$ = ${fmt(a*S.rate)} DA`:''}
+function add(){const a=+$('#am').value;if(!(a>0))return;const p=S.people.find(x=>x.id===cur);
+ p.e.unshift({id:Date.now(),t:typ,a,c:cc,da:cc==='$'?a*S.rate:a,note:$('#nt').value.trim(),d:new Date().toLocaleDateString('en-GB'),done:false});save();cl();render()}
+function tg(id){const p=S.people.find(x=>x.id===cur),x=p.e.find(y=>y.id===id);x.done=!x.done;save();render()}
+function del(id){const p=S.people.find(x=>x.id===cur);p.e=p.e.filter(y=>y.id!==id);save();render()}
+function more(){const p=S.people.find(x=>x.id===cur),n=net(p);
+ const msg=encodeURIComponent(`السلام عليكم ${p.n}، تذكير بخصوص الحساب بيننا: ${fmt(Math.abs(n))} DA`);
+ sheet(`<h3>${esc(p.n)}</h3>${n<0?`<a href="https://wa.me/?text=${msg}" target="_blank" rel="noopener"><button class="pb">تذكير عبر واتساب</button></a>`:''}<button class="pb s" onclick="ren()">تغيير الاسم</button><button class="pb d" onclick="dp()">حذف الشخص</button>`)}
+function ren(){const p=S.people.find(x=>x.id===cur);sheet(`<h3>تغيير الاسم</h3><input id="pn" value="${esc(p.n)}"><button class="pb" onclick="rn()">حفظ</button>`)}
+function rn(){const n=$('#pn').value.trim();if(!n)return;S.people.find(x=>x.id===cur).n=n;save();cl();render()}
+function dp(){sheet(`<h3>متأكد؟ راح يتمسح الشخص مع كل عملياتو</h3><button class="pb d" onclick="dp2()">نعم، احذف</button><button class="pb s" onclick="cl()">إلغاء</button>`)}
+function dp2(){S.people=S.people.filter(x=>x.id!==cur);save();cur=null;cl();render()}
+function sets(){sheet(`<h3>الإعدادات</h3><small>سعر 1$ بالدينار</small><input id="rt" type="number" value="${S.rate}"><button class="pb" onclick="sr()">حفظ السعر</button><button class="pb s" onclick="bk()">نسخ احتياطي (نسخ)</button><textarea id="rs" rows="2" placeholder="الصق النسخة الاحتياطية هنا للاسترجاع"></textarea><button class="pb s" onclick="rs()">استرجاع</button>`)}
+function sr(){const r=+$('#rt').value;if(r>0){S.rate=r;save();cl()}}
+function bk(){const t=JSON.stringify(S);try{navigator.clipboard.writeText(t).then(()=>{$('#rs').value='تم النسخ ✓'}).catch(()=>{$('#rs').value=t})}catch(e){$('#rs').value=t}}
+function rs(){try{const d=JSON.parse($('#rs').value);if(d&&Array.isArray(d.people)){S=d;save();cl();cur=null;render()}}catch(e){$('#rs').value=''}}
+render();
+</script>
+</body>
+</html>
